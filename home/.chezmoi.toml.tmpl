@@ -10,7 +10,7 @@
 {{-   $ephemeral = true -}}
 {{-   $headless = true -}}
 {{- else -}}
-{{-   $personal = promptBoolOnce . "personal" "personal" -}}
+{{-   $personal = promptBoolOnce . "personal" "is this a personal workstation?" -}}
 {{- end -}}
 
 
@@ -19,8 +19,8 @@
 {{-   $osID = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
 {{- end -}}
 
-{{-   $personal = promptStringOnce . "email" "email" -}}
-{{-   $ghuser = promptStringOnce . "ghuser" "ghuser" -}}
+{{-   $email := promptStringOnce . "email" "Enter email account" -}}
+{{-   $ghuser := promptStringOnce . "ghuser" "Enter GitHub User Name" -}}
 
 
 [data]
