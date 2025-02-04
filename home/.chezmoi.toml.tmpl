@@ -2,8 +2,6 @@
 {{- $ephemeral := false -}}{{/* true if this machine is ephemeral, e.g. a cloud or VM instance */}}
 {{- $headless := false -}}{{/* true if this machine does not have a screen and keyboard */}}
 {{- $personal := false -}}{{/* true if this machine should have personal secrets */}}
-{{- $wsl := true -}}{{/* true if this machine is running on WSL */}}
-{{- $homeLab := false -}}{{/* true if this machine is part of homelab */}}
 {{- "" -}}
 
 
@@ -16,30 +14,21 @@
 {{- end -}}
 
 
-{{- $homeLab = promptBoolOnce . "homeLab" "homeLab" -}}
-
 {{- $osID := .chezmoi.os -}}
 {{- if (and (eq .chezmoi.os "linux") (hasKey .chezmoi.osRelease "id")) -}}
 {{-   $osID = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
 {{- end -}}
 
+{{-   $personal = promptStringOnce . "email" "email" -}}
+{{-   $ghuser = promptStringOnce . "ghuser" "ghuser" -}}
 
-{{- $email := "zmaillard@healthwise.org" -}}
-{{- $ghuser := "zmaillardhw" -}}
-{{- if $personal -}}
-{{- $email := "zmaillard@proton.me" -}}
-{{- $ghuser := "zmaillard" -}}
-{{- $wsl = false -}}
-{{- end -}}
 
 [data]
   email = {{ $email | quote }}
-  fullname = "Zachary Maillard"
+  fullname = "Zach Maillard"
   ghusername = {{ $ghuser | quote }}
   personal = {{ $personal }}
   ephemeral = {{ $ephemeral }}
   headless = {{ $headless }}
-  wsl = {{ $wsl }}
-  homeLab = {{ $homeLab }}
   onepasswordAccount = "PVWWGWIMRFEUNDPUXB3BKNMY3E"
   osid = {{ $osID | quote }}
