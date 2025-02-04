@@ -1,0 +1,36 @@
+#!/bin/bash
+
+set -eufo pipefail
+
+{{ $brews := list
+    "autoconf"
+    "bat"
+    "curl"
+    "direnv"
+    "fzf"
+    "gh"
+    "jq"
+    "neovim"
+    "ripgrep"
+    "starship"
+    "tmux"
+    "wget"
+    "xz"
+    "zoxide" -}}
+
+{{ $casks := list
+    "jetbrains-toolbox"
+    "visual-studio-code"
+    "font-hack-nerd-font"
+    "1password-cli" -}}
+
+
+brew bundle --no-lock --file=/dev/stdin <<EOF
+{{ range ($brews | sortAlpha | uniq) -}}
+brew "{{ . }}"
+{{ end -}}
+{{ range ($casks | sortAlpha | uniq) -}}
+cask "{{ . }}"
+{{ end -}}
+EOF
+

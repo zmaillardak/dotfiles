@@ -1,0 +1,21 @@
+scan_timeout = 80
+command_timeout = 1000
+
+[aws]
+disabled = true
+
+[container]
+disabled = true
+
+[directory]
+truncation_length = 0
+
+{{ if .personal }}
+[cmd_duration]
+min_time = 5
+show_milliseconds = true
+{{ else }}
+[time]
+disabled = false
+{{ end }}
+
