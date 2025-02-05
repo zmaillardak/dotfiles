@@ -1,0 +1,4 @@
+[tools]
+babashka = "latest"
+node = "22"
+python = "3.11"
