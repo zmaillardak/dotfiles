@@ -120,8 +120,8 @@ alias vim="nvim"
 if [ -d "$HOME/.local/bin" ] ; then
   export PATH="$HOME/.local/bin:$PATH"
 fi
-if [ -d "$HOME/.dotnet/tools" ] ; then
-  export PATH="$HOME/.dotnet/tools:$PATH"
+if [ -d "/usr/local/share/dotnet" ] ; then
+  export PATH="/usr/local/share/dotnet:$PATH"
 fi
 
 eval "$(mise activate zsh)"
