@@ -1,4 +1,6 @@
 {{ if eq .chezmoi.os "darwin" -}}
 # Added by Toolbox App
 export PATH="$PATH:$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
+# Mise
+eval "$(/opt/homebrew/bin/mise activate zsh --shims)"
 {{ end -}}

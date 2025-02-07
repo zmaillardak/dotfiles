@@ -1,0 +1,2 @@
+github.com/swaggo/swag/cmd/swag@latest
+github.com/golang-migrate/migrate/v4/cmd/migrate@latest
