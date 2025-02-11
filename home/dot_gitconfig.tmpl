@@ -2,6 +2,10 @@
 [user]
 	name = {{ .fullname }}
 	email = {{ .email }}
+{{ if stat (joinPath "/Applications" "1Password.app" "Contents" "MacOS" "op-ssh-sign") }}
+	signingkey = {{ (onepasswordDetailsFields "jqwqnugjueipdjresvgfuysyfm").public_key.value }}
+{{ end }}
+
 [pull]
         rebase = true
 [core]
@@ -10,4 +14,15 @@
         diff = cat
         core = "less -F -X"
         branch = cat
+
+{{ if stat (joinPath "/Applications" "1Password.app" "Contents" "MacOS" "op-ssh-sign") }}
+[gpg]
+	format = ssh
+
+[gpg "ssh"]
+	program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[commit]
+	gpgsign = true
+{{ end }}
 
