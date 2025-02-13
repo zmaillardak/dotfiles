@@ -123,6 +123,11 @@ fi
 if [ -d "/usr/local/share/dotnet" ] ; then
   export PATH="/usr/local/share/dotnet:$PATH"
 fi
+if [ -d "$HOME/.dotnet/tools" ] ; then
+  export PATH="$HOME/.dotnet/tools:$PATH"
+fi
+
+
 
 eval "$(mise activate zsh)"
 
