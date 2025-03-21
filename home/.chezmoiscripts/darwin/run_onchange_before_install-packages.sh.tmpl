@@ -16,6 +16,7 @@ set -eufo pipefail
     "mise"
     "mono"
     "neovim"
+    "podman"
     "ripgrep"
     "starship"
     "terraform"
@@ -29,12 +30,14 @@ set -eufo pipefail
     "powershell"
     "visual-studio-code"
     "chatgpt"
+    "firefox"
+    "obsidian"
     "devpod"
     "font-hack-nerd-font"
     "1password-cli" -}}
 
 
-brew bundle --no-lock --file=/dev/stdin <<EOF
+brew bundle --file=/dev/stdin <<EOF
 {{ range ($brews | sortAlpha | uniq) -}}
 brew "{{ . }}"
 {{ end -}}
